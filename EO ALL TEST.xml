@@ -1,0 +1,545 @@
+﻿<xml xmlns="http://www.w3.org/1999/xhtml" collection="false">
+  <block type="loader" id="}AT[OhLnd(q=rbAwNL1Q" x="0" y="0">
+    <field name="URL">https://gist.githubusercontent.com/blinksmith/8aa7c9591c13979dbad688728a6b201a/raw/5f77deba355ce65e2f509c90f9622f641d677bbd/function-dList1.xml</field>
+  </block>
+  <block type="loader" id="piB6[|*R.z(--QX-DArs" x="0" y="0">
+    <field name="URL">https://gist.githubusercontent.com/blinksmith/8aa7c9591c13979dbad688728a6b201a/raw/5f77deba355ce65e2f509c90f9622f641d677bbd/function-DigitPercentage.xml</field>
+  </block>
+  <block type="trade" id="xgH69|xFn9=70w.*3Vo@" x="20" y="10">
+    <field name="MARKET_LIST">volidx</field>
+    <field name="SUBMARKET_LIST">random_index</field>
+    <field name="SYMBOL_LIST">R_100</field>
+    <field name="TRADETYPECAT_LIST">digits</field>
+    <field name="TRADETYPE_LIST">evenodd</field>
+    <field name="TYPE_LIST">both</field>
+    <field name="CANDLEINTERVAL_LIST">60</field>
+    <field name="TIME_MACHINE_ENABLED">FALSE</field>
+    <field name="RESTARTONERROR">TRUE</field>
+    <statement name="INITIALIZATION">
+      <block type="variables_set" id="Ls}2w2uercEbxq$e,S%:">
+        <field name="VAR">Expected Profit</field>
+        <value name="VALUE">
+          <block type="math_number" id="|FswFchWif56%E]@]9(]">
+            <field name="NUM">20</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="r3wmZ/P2Eza[a{m0|D`j">
+            <field name="VAR">Max Loss</field>
+            <value name="VALUE">
+              <block type="math_number" id="BR:FW,C1q1avp9iWNN=`">
+                <field name="NUM">32</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="6]C4H*vT?~f.h,%k5McZ">
+                <field name="VAR">Initial Amount</field>
+                <value name="VALUE">
+                  <block type="math_number" id="3l!=9/=h?m5;4nUaT70F">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="%1`]CBw}Um.tIuyx!zRn">
+                    <field name="VAR">Win Amount</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="Jgo#1ac%Ij`(mCJ;%5f/">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="SUBMARKET">
+      <block type="tradeOptions" id="No.Y.a:;H7U=e|K~{SlA">
+        <field name="DURATIONTYPE_LIST">t</field>
+        <field name="CURRENCY_LIST">USD</field>
+        <value name="DURATION">
+          <shadow type="math_number" id="l7s.LQAkd)1OQdl`05OI">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+        <value name="AMOUNT">
+          <shadow type="math_number" id="^,!9hRh*d@HGoz.`c#^O">
+            <field name="NUM">1</field>
+          </shadow>
+          <block type="math_number" id="H?i4y9iq5[|MCC(hWGnk">
+            <field name="NUM">1</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="tick_analysis" id="zMuB5|C_HQ:6-oLPU8v=" x="0" y="407">
+    <statement name="TICKANALYSIS_STACK">
+      <block type="variables_set" id="kyfO7o2x5HT!T+]@D+KB">
+        <field name="VAR">List of Digit</field>
+        <value name="VALUE">
+          <block type="procedures_callreturn" id="46:ejH$AUO_SxeY6NF^}">
+            <mutation name="dList1">
+              <arg name="dL1:: item"></arg>
+              <arg name="dL1:: limit"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="last_digit" id="eFjl$Hp7dCbrZ$N2tWw~"></block>
+            </value>
+            <value name="ARG1">
+              <block type="math_number" id="n7A~:+y@Oc/z7,cVK;){">
+                <field name="NUM">25</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="!I%^Gh@k(.gyrZ]Z#!cr">
+            <field name="VAR">Prediction</field>
+            <value name="VALUE">
+              <block type="procedures_callreturn" id="R{2uDMbV~QVYF[H+Wk5Y">
+                <mutation name="DL Percentage">
+                  <arg name="DP:: list of item"></arg>
+                  <arg name="DP:: period"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="variables_get" id="m{8fY;^(O2Da;IeNjj-T">
+                    <field name="VAR">List of Digit</field>
+                  </block>
+                </value>
+                <value name="ARG1">
+                  <block type="math_number" id="w/?(occG3(*4]II9V)h3">
+                    <field name="NUM">25</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="before_purchase" id="i-CIx.(Onm4?ihxzA}Y]" x="22" y="660">
+    <statement name="BEFOREPURCHASE_STACK">
+      <block type="controls_if" id="JYpbu+3Ug~aTJ63}NgEd">
+        <value name="IF0">
+          <block type="logic_compare" id="[@A0Pa5J4?$2s{6M?{`.">
+            <field name="OP">GTE</field>
+            <value name="A">
+              <block type="lists_length" id="vlq`*p_6pQ{,0+^8PrQ1">
+                <value name="VALUE">
+                  <block type="variables_get" id="`+o~%C.;P]#|J}EGvrWH">
+                    <field name="VAR">List of Digit</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="/PDmyN=b@*$yD]ivWh{=">
+                <field name="NUM">25</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="notify" id="x|Wt*$^L,M}37+e[hfEy">
+            <field name="NOTIFICATION_TYPE">success</field>
+            <field name="NOTIFICATION_SOUND">silent</field>
+            <value name="MESSAGE">
+              <shadow type="text" id="8}k!br!-@QyU_@tx@F(8">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="text_join" id="+tW}Ph{MB^kLfYpOfw:b">
+                <mutation items="4"></mutation>
+                <value name="ADD0">
+                  <block type="text" id=":?ki~%zxf_xO+KhD@z~4">
+                    <field name="TEXT">higest</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="variables_get" id=";edyD;G.#7U^;,3mg|nE">
+                    <field name="VAR">DP:: return highest</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="[ctgr;XA2LC1^DpaL#+=">
+                    <field name="TEXT">lowest</field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="variables_get" id="$=}%i?q{zr1kE:8,a}_!">
+                    <field name="VAR">DP:: sorted list get lowest</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="notify" id="q]^VzAXqK5C=g=e|.y:o" disabled="true">
+                <field name="NOTIFICATION_TYPE">info</field>
+                <field name="NOTIFICATION_SOUND">silent</field>
+                <value name="MESSAGE">
+                  <shadow type="text" id="G]/L/([d7BeoP8nVfymG">
+                    <field name="TEXT">abc</field>
+                  </shadow>
+                  <block type="text_join" id="TV4y.{EMbJVQ/e#:F+@A" inline="true">
+                    <mutation items="20"></mutation>
+                    <value name="ADD0">
+                      <block type="text" id="+BzE5?J,YH_70_p7b4pp">
+                        <field name="TEXT">zero: </field>
+                      </block>
+                    </value>
+                    <value name="ADD1">
+                      <block type="variables_get" id="=@LJTPplXH[Smm-0_zn2">
+                        <field name="VAR">DP:: percentage of 0</field>
+                      </block>
+                    </value>
+                    <value name="ADD2">
+                      <block type="text" id="%3ZV4%+K`(R[]kgSLP84">
+                        <field name="TEXT"> one: </field>
+                      </block>
+                    </value>
+                    <value name="ADD3">
+                      <block type="variables_get" id="]2|Cq$`k8YAPyu]r7saH">
+                        <field name="VAR">DP:: percentage of 1</field>
+                      </block>
+                    </value>
+                    <value name="ADD4">
+                      <block type="text" id="U}6!BFNBHhTo;?-}En5?">
+                        <field name="TEXT">two: </field>
+                      </block>
+                    </value>
+                    <value name="ADD5">
+                      <block type="variables_get" id="CLm]t2c`AX.!J[|m_[k#">
+                        <field name="VAR">DP:: percentage of 2</field>
+                      </block>
+                    </value>
+                    <value name="ADD6">
+                      <block type="text" id="_5Zg5m7$%B^;pEw7(a-4">
+                        <field name="TEXT"> three: </field>
+                      </block>
+                    </value>
+                    <value name="ADD7">
+                      <block type="variables_get" id="9)!]56k_o:sPz0DNd{w2">
+                        <field name="VAR">DP:: percentage of 3</field>
+                      </block>
+                    </value>
+                    <value name="ADD8">
+                      <block type="text" id="EAW.cua+1vih_BtY(.2W">
+                        <field name="TEXT"> four: </field>
+                      </block>
+                    </value>
+                    <value name="ADD9">
+                      <block type="variables_get" id="EC%zm;OJn:36;8!uMxtC">
+                        <field name="VAR">DP:: percentage of 4</field>
+                      </block>
+                    </value>
+                    <value name="ADD10">
+                      <block type="text" id="~oBI|7:iANjZ4mK%5LVb">
+                        <field name="TEXT"> five: </field>
+                      </block>
+                    </value>
+                    <value name="ADD11">
+                      <block type="variables_get" id="_#CX=,O8i+{CD``HPXKX">
+                        <field name="VAR">DP:: percentage of 5</field>
+                      </block>
+                    </value>
+                    <value name="ADD12">
+                      <block type="text" id="^}Ow*h1_ux@.bzWL)oTq">
+                        <field name="TEXT"> six: </field>
+                      </block>
+                    </value>
+                    <value name="ADD13">
+                      <block type="variables_get" id="L;D:Dhq!ZHFXWz6y;@bo">
+                        <field name="VAR">DP:: percentage of 6</field>
+                      </block>
+                    </value>
+                    <value name="ADD14">
+                      <block type="text" id="VD~O*=8AXIRyD)u^RF?c">
+                        <field name="TEXT"> seven: </field>
+                      </block>
+                    </value>
+                    <value name="ADD15">
+                      <block type="variables_get" id="y@~#8^xP/;:xO2TX^Kbd">
+                        <field name="VAR">DP:: percentage of 7</field>
+                      </block>
+                    </value>
+                    <value name="ADD16">
+                      <block type="text" id=";w:?5vk~Vxk4kx0Z]-Oq">
+                        <field name="TEXT"> eight: </field>
+                      </block>
+                    </value>
+                    <value name="ADD17">
+                      <block type="variables_get" id="`$T{wdu+zR|_j5Yp|Dr-">
+                        <field name="VAR">DP:: percentage of 8</field>
+                      </block>
+                    </value>
+                    <value name="ADD18">
+                      <block type="text" id="(k79nOZ%HTTh8!krG)49">
+                        <field name="TEXT"> nine: </field>
+                      </block>
+                    </value>
+                    <value name="ADD19">
+                      <block type="variables_get" id="=xq.co:7M_r:?4IoMSD*">
+                        <field name="VAR">DP:: percentage of 9</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="6Xln_Fvw]Q*Gkel2LeZY">
+                    <value name="IF0">
+                      <block type="logic_compare" id="M(M8n6{q,K/HXj-4lagI">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="d|8XH(wjS9nnRAbku9co">
+                            <field name="VAR">DP:: return highest</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get" id="1M,((S,O]{AyMT*8w+-I">
+                            <field name="VAR">DP:: percentage of 0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="purchase" id="wTWe(*_7M/dqrJDoEx$@">
+                        <field name="PURCHASE_LIST">DIGITEVEN</field>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_if" id="db[@)nn4]A_tO=_/(VR^">
+                        <value name="IF0">
+                          <block type="logic_compare" id="$piFe7yL3eid0ZW[eI)p">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="1,-bsNb#~GGfn0=yqE`e">
+                                <field name="VAR">DP:: return highest</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="3?-rMP3WZ@`wFqB6BNg]">
+                                <field name="VAR">DP:: percentage of 1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="purchase" id="mB,QZ,nxKn^DslF+{$V(">
+                            <field name="PURCHASE_LIST">DIGITODD</field>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="qbT{g};i*rd@}t^Ih#Oa">
+                            <value name="IF0">
+                              <block type="logic_compare" id="h;bi%TD:sQsgeguAljE9">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="W~esun*x~!ZP7MZ[y[R5">
+                                    <field name="VAR">DP:: return highest</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="AtY2*CED7=8,DzT4Yini">
+                                    <field name="VAR">DP:: percentage of 2</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="purchase" id="4ZIzm43%6zXiX-}3lP8O">
+                                <field name="PURCHASE_LIST">DIGITEVEN</field>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="Z%eDtP%?iI@yVe0:yAYh">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="#epGh}hJ202QeLLcB%)n">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="xvq6Gp$h:!5/s}q;_@,*">
+                                        <field name="VAR">DP:: return highest</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="variables_get" id="*CN?~9)yk!@~/Dxl}k!D">
+                                        <field name="VAR">DP:: percentage of 3</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="purchase" id="HnB3kkWgjl`t9nfo,^j7">
+                                    <field name="PURCHASE_LIST">DIGITODD</field>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="controls_if" id="#CSFO_;RL64hG;lOpzQT">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="P,i/O{O;_YK9fZe~h{$)">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="*s:E=BCcl|}+ucW~6{)n">
+                                            <field name="VAR">DP:: return highest</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="variables_get" id="!W]8j|v~s/-9?rTvF4p-">
+                                            <field name="VAR">DP:: percentage of 4</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="purchase" id="5uxhMUg]z@3s]KEAuR*)">
+                                        <field name="PURCHASE_LIST">DIGITEVEN</field>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="controls_if" id="CW]x/2Z?8deUQ2Tln,0`">
+                                        <value name="IF0">
+                                          <block type="logic_compare" id="ZPv?_g[S*[adl`v^2PNB">
+                                            <field name="OP">EQ</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="$6wtG0LH0W}$l?kG+.fz">
+                                                <field name="VAR">DP:: return highest</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="variables_get" id="E}$}S)j2`=n+qtM?|8*!">
+                                                <field name="VAR">DP:: percentage of 5</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="purchase" id="3aOFMLSl6NV:;?}%68JA">
+                                            <field name="PURCHASE_LIST">DIGITODD</field>
+                                          </block>
+                                        </statement>
+                                        <next>
+                                          <block type="controls_if" id="$S)ts$NJfwb[LLt~X*%X">
+                                            <value name="IF0">
+                                              <block type="logic_compare" id="YeQ+M?WID9FT[^8=SFtx">
+                                                <field name="OP">EQ</field>
+                                                <value name="A">
+                                                  <block type="variables_get" id="+;O}S:J]wB]h%i2eMYWf">
+                                                    <field name="VAR">DP:: return highest</field>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <block type="variables_get" id="aOk$;r+;kK+#e1])a6$B">
+                                                    <field name="VAR">DP:: percentage of 6</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <statement name="DO0">
+                                              <block type="purchase" id="GHi{|~2KWqgoU,DdH3{,">
+                                                <field name="PURCHASE_LIST">DIGITEVEN</field>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="controls_if" id="^}nV9ZT:|H*Ap1(.JovH">
+                                                <value name="IF0">
+                                                  <block type="logic_compare" id="N!B;?;%vR-C4x.vRexlh">
+                                                    <field name="OP">EQ</field>
+                                                    <value name="A">
+                                                      <block type="variables_get" id="/@4g7RkU:8Z6C,v6ChX.">
+                                                        <field name="VAR">DP:: return highest</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="B">
+                                                      <block type="variables_get" id="/I*6|ePq]v}uB0?3KsR3">
+                                                        <field name="VAR">DP:: percentage of 7</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO0">
+                                                  <block type="purchase" id="kbY(tN,]86!)i3/I+Xzm">
+                                                    <field name="PURCHASE_LIST">DIGITODD</field>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="controls_if" id="]d+f(9q8I(`)qJCE7=Rh">
+                                                    <value name="IF0">
+                                                      <block type="logic_compare" id="V,Z-jy{cKf7|uvg[Z+`?">
+                                                        <field name="OP">EQ</field>
+                                                        <value name="A">
+                                                          <block type="variables_get" id="jn5X^9bgO4}q^^(jTU2v">
+                                                            <field name="VAR">DP:: return highest</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <block type="variables_get" id="D_G~OHa/cWLseQK*$V6,">
+                                                            <field name="VAR">DP:: percentage of 8</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <statement name="DO0">
+                                                      <block type="purchase" id="#P)]TB:-i)I!j6HeS9HB">
+                                                        <field name="PURCHASE_LIST">DIGITEVEN</field>
+                                                      </block>
+                                                    </statement>
+                                                    <next>
+                                                      <block type="controls_if" id="qi0.H8!j(49;u8g4VkJI">
+                                                        <value name="IF0">
+                                                          <block type="logic_compare" id="/-h-{e.8Q|zTg9tGlOjI">
+                                                            <field name="OP">EQ</field>
+                                                            <value name="A">
+                                                              <block type="variables_get" id="N^Y1(Z}Co}!9|xMkd8XH">
+                                                                <field name="VAR">DP:: return highest</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <block type="variables_get" id="ib6wS|BTwWRo|;_+6!N7">
+                                                                <field name="VAR">DP:: percentage of 9</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <statement name="DO0">
+                                                          <block type="purchase" id="l8_n)`BqC2v`-gY{0cT%">
+                                                            <field name="PURCHASE_LIST">DIGITODD</field>
+                                                          </block>
+                                                        </statement>
+                                                        <next>
+                                                          <block type="trade_again" id="WZ(w$uQp};dk{9LK4^So" disabled="true"></block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="after_purchase" id="D^Jz1^n=2vtZku1vBN@;" x="910" y="1030">
+    <statement name="AFTERPURCHASE_STACK">
+      <block type="trade_again" id="Aq~rt,VU{}m_imcWNcw;"></block>
+    </statement>
+  </block>
+</xml>
